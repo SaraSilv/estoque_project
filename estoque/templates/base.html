@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Stock Master{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #2c3e50, #4a69bd);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        header p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        nav {
+            background: linear-gradient(90deg, #34495e, #2c3e50);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+            color: #f39c12;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group input[type="submit"] {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #2ecc71;
+        }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+            header p {
+                font-size: 16px;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+            .container {
+                padding: 20px;
+            }
+            footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stock Master</h1>
+        <p>Seu sistema de gerenciamento de estoque eficiente e confiável</p>
+    </header>
+
+    <nav>
+        <a href="{% url 'inicio' %}">Início</a>
+        <a href="{% url 'produtos' %}">Produtos</a>
+        <a href="{% url 'movimentacoes' %}">Movimentações</a>
+        <a href="{% url 'relatorios' %}">Relatórios</a>
+        <a href="{% url 'contato' %}">Contato</a>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Stock Master. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

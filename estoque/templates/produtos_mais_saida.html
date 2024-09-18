@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório de Produtos com Maior Saída - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Relatório de Produtos com Maior Saída</h2>
+    <p>Abaixo está a lista de produtos com as maiores quantidades de venda:</p>
+
+    <!-- Verifica se há produtos com maior saída -->
+    {% if produtos_mais_saida %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade Vendida</th>
+                    <th>Preço Unitário</th>
+                    <th>Total de Vendas</th>
+                    <th>Período de Venda</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos_mais_saida %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.quantidade_vendida }}</td>
+                    <td>{{ produto.preco_unitario }}</td>
+                    <td>{{ produto.total_vendas }}</td>
+                    <td>{{ produto.periodo_venda }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há dados sobre produtos com maior saída para exibir.</p>
+    {% endif %}
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}

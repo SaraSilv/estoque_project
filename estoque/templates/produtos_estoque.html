@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório de Produtos em Estoque - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Relatório de Produtos em Estoque</h2>
+    <p>Abaixo está a lista de todos os produtos disponíveis em estoque:</p>
+
+    <!-- Verifica se há produtos em estoque -->
+    {% if produtos_estoque %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade em Estoque</th>
+                    <th>Preço Unitário</th>
+                    <th>Fornecedor</th>
+                    <th>Data de Cadastro</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos_estoque %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.quantidade_estoque }}</td>
+                    <td>{{ produto.preco_unitario }}</td>
+                    <td>{{ produto.fornecedor }}</td>
+                    <td>{{ produto.data_cadastro }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há produtos em estoque.</p>
+    {% endif %}
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}

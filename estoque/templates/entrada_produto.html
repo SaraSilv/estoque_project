@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório de Entrada de Produtos - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Relatório de Entrada de Produtos</h2>
+    <p>Abaixo está a lista das entradas de produtos recentes:</p>
+
+    <!-- Verifica se há entradas de produtos -->
+    {% if entradas_produtos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Data de Entrada</th>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Fornecedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entrada in entradas_produtos %}
+                <tr>
+                    <td>{{ entrada.data_entrada }}</td>
+                    <td>{{ entrada.nome_produto }}</td>
+                    <td>{{ entrada.quantidade }}</td>
+                    <td>{{ entrada.fornecedor }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há entradas de produtos para exibir.</p>
+    {% endif %}
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}

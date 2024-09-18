@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Movimentações - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Gerar Movimentações</h2>
+    <p>Escolha o tipo de movimentação que deseja gerar:</p>
+
+    <div class="report-buttons">
+        <button onclick="window.location.href='{% url 'produtos_vendidos' %}'">Produtos Vendidos</button>
+        <button onclick="window.location.href='{% url 'produtos_estoque' %}'">Produtos em Estoque</button>
+        <button onclick="window.location.href='{% url 'produtos_mais_saida' %}'">Produtos com Mais Saída</button>
+        <button onclick="window.location.href='{% url 'produtos_vencimento' %}'">Produtos Próximos ao Vencimento</button>
+        <button onclick="window.location.href='{% url 'produtos_estoque_baixo' %}'">Produtos com Estoque Baixo</button>
+    </div>
+
+    <style>
+        .report-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: 20px 0;
+        }
+        .report-buttons button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .report-buttons button:hover {
+            background-color: #3498db;
+        }
+    </style>
+{% endblock %}

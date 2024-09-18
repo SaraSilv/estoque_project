@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Relatórios - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Gerar Relatórios</h2>
+    <p>Escolha o tipo de relatório que deseja gerar:</p>
+
+    <div class="report-buttons">
+        <button onclick="window.location.href='{% url 'relatorio_entrada_produtos' %}'">Relatório de Entrada de Produtos</button>
+        <button onclick="window.location.href='{% url 'relatorio_saida_produtos' %}'">Relatório de Saída de Produtos</button>
+        <button onclick="window.location.href='{% url 'relatorio_nome_vendedor' %}'">Relatório por Nome do Vendedor</button>
+        <button onclick="window.location.href='{% url 'relatorio_tipo_venda' %}'">Relatório por Tipo de Venda</button>
+        <button onclick="window.location.href='{% url 'relatorio_bandeira_cartao' %}'">Relatório por Bandeira de Cartão</button>
+    </div>
+
+    <style>
+        .report-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: 20px 0;
+        }
+        .report-buttons button {
+            background-color: #2980b9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .report-buttons button:hover {
+            background-color: #3498db;
+        }
+    </style>
+{% endblock %}

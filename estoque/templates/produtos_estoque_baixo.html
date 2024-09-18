@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório de Produtos com Estoque Baixo - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Relatório de Produtos com Estoque Baixo</h2>
+    <p>Abaixo está a lista de produtos com estoque abaixo do nível mínimo:</p>
+
+    <!-- Verifica se há produtos com estoque baixo -->
+    {% if produtos_estoque_baixo %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade em Estoque</th>
+                    <th>Quantidade Mínima</th>
+                    <th>Fornecedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos_estoque_baixo %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.quantidade_estoque }}</td>
+                    <td>{{ produto.quantidade_minima }}</td>
+                    <td>{{ produto.fornecedor }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Todos os produtos estão com estoque acima do nível mínimo.</p>
+    {% endif %}
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}

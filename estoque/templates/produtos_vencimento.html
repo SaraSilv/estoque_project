@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório de Produtos Próximos ao Vencimento - Stock Master{% endblock %}
+
+{% block content %}
+    <h2>Relatório de Produtos Próximos ao Vencimento</h2>
+    <p>Abaixo está a lista de produtos que estão próximos da data de vencimento:</p>
+
+    <!-- Verifica se há produtos próximos ao vencimento -->
+    {% if produtos_proximos_vencimento %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade em Estoque</th>
+                    <th>Data de Vencimento</th>
+                    <th>Fornecedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos_proximos_vencimento %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.quantidade_estoque }}</td>
+                    <td>{{ produto.data_vencimento }}</td>
+                    <td>{{ produto.fornecedor }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há produtos próximos ao vencimento.</p>
+    {% endif %}
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+{% endblock %}
